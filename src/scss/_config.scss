@@ -1,0 +1,21 @@
+$primary-clr: rgb(143, 148, 251);
+$primary-clr-2: rgb(78, 84, 200);
+$black: rgb(41, 36, 36);
+$white: rgb(255, 255, 255);
+$red: rgb(231, 34, 34);
+$grey: rgb(182, 182, 182);
+$radius: 0.25rem;
+$spacing: 0.1rem;
+$shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+$ease-trans: all 0.4s ease;
+
+%grid-center {
+    display: grid;
+    place-items: center;
+}
+
+%flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
