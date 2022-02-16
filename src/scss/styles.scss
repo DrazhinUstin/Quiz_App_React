@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 @import 'config';
 @import 'quiz-setup';
+@import 'quiz';
 
 * {
     margin: 0;
@@ -29,10 +30,6 @@ p {
     line-height: 1.25;
 }
 
-li {
-    list-style-type: none;
-}
-
 label {
     display: block;
     margin-bottom: 0.5rem;
@@ -55,6 +52,7 @@ button {
 
 .btn {
     height: 2rem;
+    display: inline-block;
     padding: 0 0.5rem;
     border: none;
     border-radius: $radius;
@@ -62,6 +60,10 @@ button {
     color: $white;
     text-transform: capitalize;
     letter-spacing: $spacing;
+    &.disabled {
+        background-color: $grey;
+        pointer-events: none;
+    }
 }
 
 .error-message {

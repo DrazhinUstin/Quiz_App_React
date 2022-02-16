@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuizSetup from './components/QuizSetup';
+import Quiz from './components/Quiz';
 
 const initParams = {
     category: 9,
@@ -13,6 +14,8 @@ const App = () => {
     const [categories, setCategories] = useState([]);
     const [params, setParams] = useState(initParams);
     const [quiz, setQuiz] = useState(null);
+    const [step, setStep] = useState(0);
+    const [points, setPoints] = useState(0);
 
     const getQuizData = async (url) => {
         setLoading(true);
@@ -41,11 +44,11 @@ const App = () => {
         return <div className='loading'></div>;
     }
 
-    return (
-        <>
-            <QuizSetup {...{ error, categories, params, setParams, getQuizData }} />
-        </>
-    );
+    if (quiz) {
+        return <Quiz {...{ quiz, step, setStep, setPoints }} />;
+    }
+
+    return <QuizSetup {...{ error, categories, params, setParams, getQuizData }} />;
 };
 
 export default App;
