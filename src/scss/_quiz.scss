@@ -1,9 +1,5 @@
 .quiz {
     max-width: 800px;
-    width: 90vw;
-    padding: 2rem;
-    border-radius: $radius;
-    background-color: $white;
     &-progress {
         @extend %flex-between;
         margin-bottom: 2rem;
@@ -14,6 +10,12 @@
             border-radius: $radius;
             overflow: hidden;
             background-color: $grey;
+            @include for-size(small) {
+                width: 12rem;
+            }
+            @include for-size(extra-small) {
+                width: 10rem;
+            }
             span {
                 position: absolute;
                 top: 0;
@@ -30,6 +32,9 @@
         font-size: 1.2rem;
         text-transform: unset;
         line-height: 1.25;
+        @include for-size(small) {
+            font-size: 1rem;
+        }
     }
     &-answers {
         list-style-type: upper-latin;

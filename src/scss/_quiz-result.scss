@@ -21,14 +21,10 @@
 
 .quiz-result {
     max-width: 600px;
-    width: 90vw;
-    padding: 2rem;
-    border-radius: $radius;
-    background-color: $white;
     transform: scale(0);
     transition: $ease-trans;
     transition-property: transform;
-    h2 {
+    &-header {
         margin-bottom: 1rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid $grey;

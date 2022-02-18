@@ -1,13 +1,8 @@
 .quiz-setup {
-    padding: 2rem;
-    border-radius: $radius;
-    box-shadow: $shadow;
-    background-color: $white;
+    position: relative;
+    max-width: 450px;
     &-field {
-        margin-bottom: 1rem;
-    }
-    h2 {
-        margin-bottom: 1rem;
+        margin: 1rem 0;
     }
     select {
         width: 100%;

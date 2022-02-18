@@ -44,7 +44,7 @@ const Quiz = ({ quiz, step, setStep, setPoints, isTestPassed, setIsTestPassed })
 
     const { question, correct_answer, incorrect_answers } = quiz[step];
     return (
-        <section className='quiz'>
+        <section className='quiz wrapper'>
             <header className='quiz-progress'>
                 <div className='quiz-progress-indicator'>
                     <span style={{ width: `${(100 / quiz.length) * (step + 1)}%` }}></span>

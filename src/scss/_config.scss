@@ -5,6 +5,7 @@ $white: rgb(255, 255, 255);
 $red: rgb(229, 59, 59);
 $green: rgb(23, 166, 23);
 $grey: rgb(182, 182, 182);
+$orange: rgb(241, 97, 44);
 $radius: 0.25rem;
 $spacing: 0.1rem;
 $shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
@@ -19,4 +20,17 @@ $ease-trans: all 0.4s ease;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    column-gap: 0.5rem;
+}
+
+@mixin for-size($size) {
+    @if ($size == small) {
+        @media screen and (max-width: 450px) {
+            @content;
+        }
+    } @else if ($size == extra-small) {
+        @media screen and (max-width: 350px) {
+            @content;
+        }
+    }
 }

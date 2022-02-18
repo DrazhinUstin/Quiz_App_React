@@ -70,6 +70,30 @@ button {
     }
 }
 
+.wrapper {
+    width: 90vw;
+    padding: 2rem;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    background-color: $white;
+    @include for-size(small) {
+        padding: 2rem 1rem;
+    }
+}
+
+.github-icon {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    color: $primary-clr-2;
+    font-size: 1.5rem;
+    transition: $ease-trans;
+    &:hover {
+        color: $orange;
+        transform: rotate(360deg);
+    }
+}
+
 .error-message {
     margin-bottom: 1rem;
     color: $red;

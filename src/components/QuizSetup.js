@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 const QuizSetup = ({ error, categories, params, setParams, getQuizData }) => {
     const handleParams = (e) => {
@@ -16,7 +17,14 @@ const QuizSetup = ({ error, categories, params, setParams, getQuizData }) => {
     };
 
     return (
-        <form className='quiz-setup'>
+        <form className='quiz-setup wrapper'>
+            <a
+                href='https://github.com/DrazhinUstin/Quiz_App_React'
+                target='_blank'
+                rel='noopener noreferrer'
+            >
+                <FaGithub className='github-icon' />
+            </a>
             <h2>setup quiz</h2>
             <div className='quiz-setup-field'>
                 <label htmlFor='category'>category:</label>

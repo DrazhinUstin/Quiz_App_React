@@ -25,8 +25,8 @@ const QuizResult = ({
     const successRate = Math.round((points / quiz.length) * 100);
     return (
         <div className={`quiz-result-overlay ${isTestPassed && 'show'}`}>
-            <section className='quiz-result'>
-                <h2>quiz result</h2>
+            <section className='quiz-result wrapper'>
+                <h2 className='quiz-result-header'>quiz result</h2>
                 <div className='quiz-result-field'>
                     <h4>category:</h4>
                     <p>{category}</p>
