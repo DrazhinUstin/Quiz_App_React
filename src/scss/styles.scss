@@ -2,6 +2,7 @@
 @import 'config';
 @import 'quiz-setup';
 @import 'quiz';
+@import 'quiz-result';
 
 * {
     margin: 0;
@@ -60,6 +61,9 @@ button {
     color: $white;
     text-transform: capitalize;
     letter-spacing: $spacing;
+    &.red {
+        background-color: $red;
+    }
     &.disabled {
         background-color: $grey;
         pointer-events: none;

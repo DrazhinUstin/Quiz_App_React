@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { shuffleArray } from '../utils';
 
-const Quiz = ({ quiz, step, setStep, setPoints }) => {
+const Quiz = ({ quiz, step, setStep, setPoints, isTestPassed, setIsTestPassed }) => {
     const [isUserAnswered, setIsUserAnswered] = useState(false);
     const [answers, setAnswers] = useState([]);
     const answersRef = useRef();
@@ -18,11 +18,16 @@ const Quiz = ({ quiz, step, setStep, setPoints }) => {
 
     const nextQuestion = () => {
         if (step === quiz.length - 1 && isUserAnswered) {
+            setIsTestPassed(true);
             return;
         }
         setStep((step) => step + 1);
         setIsUserAnswered(false);
     };
+
+    useEffect(() => {
+        if (!isTestPassed) setIsUserAnswered(false);
+    }, [isTestPassed]);
 
     useEffect(() => {
         setAnswers(shuffleArray([...incorrect_answers, correct_answer]));
