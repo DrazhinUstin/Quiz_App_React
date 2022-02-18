@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { shuffleArray } from '../utils';
 
-const Quiz = ({ quiz, step, setStep, setPoints, isTestPassed, setIsTestPassed }) => {
+const Quiz = ({ quiz, step, setStep, setStats, isTestPassed, setIsTestPassed }) => {
     const [isUserAnswered, setIsUserAnswered] = useState(false);
     const [answers, setAnswers] = useState([]);
     const answersRef = useRef();
@@ -9,9 +9,12 @@ const Quiz = ({ quiz, step, setStep, setPoints, isTestPassed, setIsTestPassed })
     const handleAnswer = (e) => {
         const answerDOM = e.target;
         if (answerDOM.innerHTML === correct_answer) {
-            setPoints((points) => points + 1);
+            setStats((stats) => ({ ...stats, points: stats.points + 1 }));
         } else {
             answerDOM.className = 'incorrect';
+        }
+        if (step === quiz.length - 1) {
+            setStats((stats) => ({ ...stats, endTime: Date.now() }));
         }
         setIsUserAnswered(true);
     };

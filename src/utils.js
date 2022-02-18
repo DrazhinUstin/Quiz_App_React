@@ -9,4 +9,13 @@ const shuffleArray = (array) => {
     return array;
 };
 
-export { shuffleArray };
+const convertMilliseconds = (ms) => {
+    if (ms < 0) return;
+    const minutes = Math.floor(ms / 60000);
+    const seconds = ((ms % 60000) / 1000).toFixed();
+    return seconds === 60
+        ? `${minutes + 1} : 00`
+        : `${minutes} : ${seconds < 10 ? '0' + seconds : seconds}`;
+};
+
+export { shuffleArray, convertMilliseconds };

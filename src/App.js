@@ -9,6 +9,12 @@ const initParams = {
     amount: 5,
 };
 
+const initStats = {
+    points: 0,
+    startTime: 0,
+    endTime: 0,
+};
+
 const App = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -16,7 +22,7 @@ const App = () => {
     const [params, setParams] = useState(initParams);
     const [quiz, setQuiz] = useState(null);
     const [step, setStep] = useState(0);
-    const [points, setPoints] = useState(0);
+    const [stats, setStats] = useState(initStats);
     const [isTestPassed, setIsTestPassed] = useState(false);
 
     const getQuizData = async (url) => {
@@ -28,6 +34,7 @@ const App = () => {
                 setCategories(data.trivia_categories);
             } else if (data.response_code === 0) {
                 setQuiz(data.results);
+                setStats({ ...stats, startTime: Date.now() });
                 setError(false);
             } else if (data.response_code === 1) {
                 setError(true);
@@ -49,17 +56,9 @@ const App = () => {
     if (quiz) {
         return (
             <>
-                <Quiz {...{ quiz, step, setStep, setPoints, isTestPassed, setIsTestPassed }} />
+                <Quiz {...{ quiz, step, setStep, setStats, isTestPassed, setIsTestPassed }} />
                 <QuizResult
-                    {...{
-                        quiz,
-                        setQuiz,
-                        setStep,
-                        points,
-                        setPoints,
-                        isTestPassed,
-                        setIsTestPassed,
-                    }}
+                    {...{ quiz, setQuiz, setStep, stats, setStats, isTestPassed, setIsTestPassed }}
                 />
             </>
         );

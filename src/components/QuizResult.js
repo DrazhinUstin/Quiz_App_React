@@ -1,18 +1,11 @@
 import React from 'react';
 import { FaThumbsUp, FaThumbsDown, FaShareSquare } from 'react-icons/fa';
+import { convertMilliseconds } from '../utils';
 
-const QuizResult = ({
-    quiz,
-    setQuiz,
-    setStep,
-    points,
-    setPoints,
-    isTestPassed,
-    setIsTestPassed,
-}) => {
+const QuizResult = ({ quiz, setQuiz, setStep, stats, setStats, isTestPassed, setIsTestPassed }) => {
     const restartQuiz = () => {
         setStep(0);
-        setPoints(0);
+        setStats((stats) => ({ ...stats, points: 0, startTime: Date.now() }));
         setIsTestPassed(false);
     };
 
@@ -22,7 +15,8 @@ const QuizResult = ({
     };
 
     const { category, difficulty } = quiz[0];
-    const successRate = Math.round((points / quiz.length) * 100);
+    const successRate = Math.round((stats.points / quiz.length) * 100);
+    const timeSpent = convertMilliseconds(stats.endTime - stats.startTime);
     return (
         <div className={`quiz-result-overlay ${isTestPassed && 'show'}`}>
             <section className='quiz-result wrapper'>
@@ -41,7 +35,11 @@ const QuizResult = ({
                 </div>
                 <div className='quiz-result-field'>
                     <h4>correct answers:</h4>
-                    <p>{points}</p>
+                    <p>{stats.points}</p>
+                </div>
+                <div className='quiz-result-field'>
+                    <h4>time spent:</h4>
+                    <p>{timeSpent}</p>
                 </div>
                 <div className='quiz-result-field'>
                     <h4>success rate:</h4>
